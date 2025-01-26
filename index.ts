@@ -259,3 +259,5 @@ const bankAccount = new BankAccount("123456789", 1000, "John Doe", "1234");
 // console.log(bankAccount.balance); // Error: balance is private
 console.log(bankAccount.getBalance("1234")); // Acceso allowed
 bankAccount.deposit(500);
+
+//Encapsulation and generics
