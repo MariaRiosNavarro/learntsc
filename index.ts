@@ -109,14 +109,14 @@ sendBew(programmerC);
 // OOP
 
 class Movie {
-  name: string = "";
-  lead: string = "";
-  actors: string[] = [];
+  name?: string;
+  lead?: string;
+  actors?: string[] = [];
 
   constructor(n?: string, l?: string, as?: string[]) {
-    if (n) this.name = n;
-    if (l) this.lead = l;
-    if (as) this.actors = as;
+    this.name = n;
+    this.lead = l;
+    this.actors = as;
   }
 
   playInCinema() {
@@ -174,9 +174,14 @@ class Book {
   ) {}
 
   displayInfo(): void {
-    console.log(`${this.title} by ${this.author} (${this.year})`);
+    console.log(`Book: ${this.title} by ${this.author} (${this.year})`);
   }
 }
+
+// Book
+const book = new Book("1984", "George Orwell", 1949, "978-0451524935");
+console.log(book.title); // Acceso allowed
+book.displayInfo();
 
 // Public + Private
 class Account {
@@ -203,6 +208,17 @@ class Account {
     return false;
   }
 }
+
+// Account
+const account = new Account(
+  "john_doe",
+  "john@example.com",
+  "secret123",
+  new Date()
+);
+console.log(account.username); // Acceso allowed
+// console.log(account.password); // Error: password is private
+account.updateEmail("new@example.com");
 
 // Only Private
 class BankAccount {
@@ -237,22 +253,6 @@ class BankAccount {
     throw new Error("Invalid PIN");
   }
 }
-
-// Book
-const book = new Book("1984", "George Orwell", 1949, "978-0451524935");
-console.log(book.title); // Acceso allowed
-book.displayInfo();
-
-// Account
-const account = new Account(
-  "john_doe",
-  "john@example.com",
-  "secret123",
-  new Date()
-);
-console.log(account.username); // Acceso allowed
-// console.log(account.password); // Error: password is private
-account.updateEmail("new@example.com");
 
 // BankAccount
 const bankAccount = new BankAccount("123456789", 1000, "John Doe", "1234");
