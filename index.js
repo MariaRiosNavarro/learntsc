@@ -181,3 +181,32 @@ const bankAccount = new BankAccount("123456789", 1000, "John Doe", "1234");
 console.log(bankAccount.getBalance("1234")); // Acceso allowed
 bankAccount.deposit(500);
 //Encapsulation and generics
+class Raffle {
+    constructor(name) {
+        this.name = name;
+    }
+    setTicket(ticket) {
+        this.ticket = ticket;
+    }
+    getTicket() {
+        return this.ticket;
+    }
+    raffle() {
+        if (this.ticket === undefined) {
+            return "No number set for the raffle";
+        }
+        else {
+            return `For ${this.name} the ticket is ${this.ticket}`;
+        }
+    }
+}
+let numberRaffle = new Raffle("Maria");
+numberRaffle.setTicket(7);
+console.log(numberRaffle.raffle());
+// numberRaffle.ticket // Isue
+console.log(numberRaffle.getTicket());
+let stringRaffle = new Raffle("Jane");
+stringRaffle.setTicket("aei");
+console.log(stringRaffle.raffle());
+// numberRaffle.ticket // Isue
+console.log(stringRaffle.getTicket());

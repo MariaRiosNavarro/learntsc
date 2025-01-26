@@ -261,3 +261,40 @@ console.log(bankAccount.getBalance("1234")); // Acceso allowed
 bankAccount.deposit(500);
 
 //Encapsulation and generics
+
+class Raffle<T> {
+  // Not cann modificate it, only with setTicket, NOT with raffle.ticket
+  // We can use readonly too
+
+  private ticket?: T;
+
+  constructor(private name: string) {}
+
+  setTicket(ticket: T): void {
+    this.ticket = ticket;
+  }
+
+  getTicket() {
+    return this.ticket;
+  }
+
+  public raffle(): string {
+    if (this.ticket === undefined) {
+      return "No number set for the raffle";
+    } else {
+      return `For ${this.name} the ticket is ${this.ticket}`;
+    }
+  }
+}
+
+let numberRaffle = new Raffle<number>("Maria");
+numberRaffle.setTicket(7);
+console.log(numberRaffle.raffle());
+// numberRaffle.ticket // Isue
+console.log(numberRaffle.getTicket());
+
+let stringRaffle = new Raffle<string>("Jane");
+stringRaffle.setTicket("aei");
+console.log(stringRaffle.raffle());
+// numberRaffle.ticket // Isue
+console.log(stringRaffle.getTicket());
